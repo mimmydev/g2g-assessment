@@ -189,8 +189,8 @@ const currentGenderFilterLabel = computed(() => {
           v-if="users && users.length > 0"
           variant="outline"
           size="sm"
-          @click="handleExportCSV"
           class="flex items-center"
+          @click="handleExportCSV"
         >
           <DownloadIcon class="h-4 w-4 mr-2" />
           Export CSV
@@ -200,8 +200,8 @@ const currentGenderFilterLabel = computed(() => {
           <Button
             :variant="viewMode === 'list' ? 'default' : 'outline'"
             size="sm"
-            @click="handleViewModeChange('list')"
             class="rounded-none border-0"
+            @click="handleViewModeChange('list')"
           >
             <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -216,8 +216,8 @@ const currentGenderFilterLabel = computed(() => {
           <Button
             :variant="viewMode === 'grid' ? 'default' : 'outline'"
             size="sm"
-            @click="handleViewModeChange('grid')"
             class="rounded-none border-0 border-l border-gray-200"
+            @click="handleViewModeChange('grid')"
           >
             <svg class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -319,12 +319,12 @@ const currentGenderFilterLabel = computed(() => {
           <PopoverContent class="w-auto p-0" align="start">
             <Calendar
               :model-value="stringToDateValue(dateOfBirthFilter)"
+              mode="single"
+              :select-multiple="false"
               @update:model-value="
                 (date: DateValue | undefined) =>
                   handleDateOfBirthFilterChange(dateValueToString(date))
               "
-              mode="single"
-              :select-multiple="false"
             />
           </PopoverContent>
         </Popover>
@@ -342,12 +342,12 @@ const currentGenderFilterLabel = computed(() => {
           <PopoverContent class="w-auto p-0" align="start">
             <Calendar
               :model-value="stringToDateValue(createdAtFilter)"
+              mode="single"
+              :select-multiple="false"
               @update:model-value="
                 (date: DateValue | undefined) =>
                   handleCreatedAtFilterChange(dateValueToString(date))
               "
-              mode="single"
-              :select-multiple="false"
             />
           </PopoverContent>
         </Popover>
@@ -365,12 +365,12 @@ const currentGenderFilterLabel = computed(() => {
           <PopoverContent class="w-auto p-0" align="start">
             <Calendar
               :model-value="stringToDateValue(updatedAtFilter)"
+              mode="single"
+              :select-multiple="false"
               @update:model-value="
                 (date: DateValue | undefined) =>
                   handleUpdatedAtFilterChange(dateValueToString(date))
               "
-              mode="single"
-              :select-multiple="false"
             />
           </PopoverContent>
         </Popover>

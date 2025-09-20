@@ -1,18 +1,12 @@
 <script setup lang="ts">
-/**
- * Main application component that orchestrates the user management system.
- *
- * This component serves as the entry point and container for the application,
- * handling component orchestration, user interactions, and state management.
- */
 import { onMounted, ref } from 'vue';
-import UserListItem from './components/user/UserListItem.vue';
-import UserGridItem from './components/user/UserGridItem.vue';
-import UserControls from './components/user/UserControls.vue';
-import UserForm from './components/user/UserForm.vue';
-import { useUsers } from './composables/useUsers';
-import { useFilteredUsers } from './composables/useFilteredUsers';
-import type { User } from './models/user';
+import UserListItem from '@/components/user/UserListItem.vue';
+import UserGridItem from '@/components/user/UserGridItem.vue';
+import UserControls from '@/components/user/UserControls.vue';
+import UserForm from '@/components/user/UserForm.vue';
+import { useUsers } from '@/composables/useUsers';
+import { useFilteredUsers } from '@/composables/useFilteredUsers';
+import type { User } from '@/models/user';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -25,46 +19,23 @@ import {
 import { Toaster } from '@/components/ui/sonner';
 import 'vue-sonner/style.css';
 
-/**
- * User management services from the application layer
- */
 const { users, loading, error, fetchUsers, deleteUser } = useUsers();
 
-/**
- * View state management
- * Controls how users are displayed (list vs grid)
- */
 const viewMode = ref<'list' | 'grid'>('list');
 
-/**
- * Sorting state management
- * Determines how the user list should be ordered
- */
 const sortBy = ref<keyof User>('name');
 const sortOrder = ref<'asc' | 'desc'>('asc');
 
-/**
- * Filtering state management
- * Controls which users should be shown based on various criteria
- */
 const genderFilter = ref<User['gender'] | 'all'>('all');
 const dateOfBirthFilter = ref('');
 const createdAtFilter = ref('');
 const updatedAtFilter = ref('');
 const profilePictureFilter = ref<'with' | 'without' | 'all'>('all');
 
-/**
- * Dialog state management
- * Controls the visibility of create and edit user dialogs
- */
 const isCreateDialogOpen = ref(false);
 const isEditDialogOpen = ref(false);
 const editingUser = ref<User | null>(null);
 
-/**
- * Filtered users computed property
- * Uses the dedicated useFilteredUsers composable to maintain SRP
- */
 const { filteredUsers: displayedUsers } = useFilteredUsers(
   users,
   {

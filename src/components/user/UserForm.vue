@@ -237,6 +237,7 @@ defineExpose({
                 "
                 :default-value="fromDate(new Date(1990, 0, 1), 'UTC')"
                 :max-value="fromDate(new Date(), 'UTC')"
+                initial-focus
                 @update:model-value="
                   (date) => {
                     if (date && componentField['onUpdate:modelValue']) {
@@ -246,7 +247,6 @@ defineExpose({
                     }
                   }
                 "
-                initial-focus
               />
             </PopoverContent>
           </Popover>
@@ -295,7 +295,7 @@ defineExpose({
       </FormField>
 
       <div class="flex justify-end space-x-2 pt-4">
-        <Button type="button" variant="outline" @click="emit('close')" :disabled="loading">
+        <Button type="button" variant="outline" :disabled="loading" @click="emit('close')">
           Cancel
         </Button>
         <Button type="submit" :disabled="loading">

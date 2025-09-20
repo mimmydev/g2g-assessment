@@ -113,14 +113,14 @@ const handleDelete = () => {
       <Button
         variant="outline"
         size="sm"
-        @click="handleEdit"
         class="flex-1 text-blue-600 border-blue-200 hover:bg-blue-50 cursor-pointer"
+        @click="handleEdit"
       >
         <Pencil />
         Edit
       </Button>
 
-      <Button variant="destructive" size="sm" @click="handleDelete" class="flex-1 cursor-pointer">
+      <Button variant="destructive" size="sm" class="flex-1 cursor-pointer" @click="handleDelete">
         <Trash />
         Delete
       </Button>
