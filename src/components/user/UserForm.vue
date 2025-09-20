@@ -50,7 +50,6 @@ const { createUser, updateUser, loading } = useUsers();
 const formRef = ref<InstanceType<typeof Form>>();
 
 const isEditMode = computed(() => !!props.user);
-const dialogTitle = computed(() => (isEditMode.value ? 'Edit User' : 'Create User'));
 const submitButtonText = computed(() => (isEditMode.value ? 'Update User' : 'Create User'));
 const loadingText = computed(() => (isEditMode.value ? 'Updating...' : 'Creating...'));
 
@@ -113,7 +112,7 @@ watch(
 
 watch(
   () => props.user,
-  async (newUser) => {
+  async () => {
     if (props.open) {
       await nextTick();
       await initializeForm();
